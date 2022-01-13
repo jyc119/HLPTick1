@@ -3,6 +3,26 @@
 //------------------------write your answer function(s) here---------------------//
 
 // top-level subfunctions of polarToCartesianApprox (if any)
+let fact x =
+    if x = 0
+    then 1.0
+    else List.reduce (*) [1.0..x]
+
+let termSine n =
+    if n = 0
+    then 0
+    else if n % 2 = 0
+    then (x ** float(n-1)) / float(fact n-1)
+    else (x ** float(n)) / float(fact n)
+
+let termCos n =
+    if n = 0
+    then 1.0
+    else if n % 2 = 0
+    then (x ** float(n)) / float(fact n)
+    else (x ** float(n-1)) / float(fact n-1)
+
+
 
 /// answer to Tick1
 // the header given here is correct.
@@ -11,7 +31,7 @@ let polarToCartesianApprox (r,theta) n =
 
 
 //--------------------testbench code - DO NOT CHANGE-----------------------------//
-//testing TESTING
+
 /// used to make generate testbench data
 let testInputs =
     let testPolarCoords = List.allPairs [1.;2.] [1.;2.]
