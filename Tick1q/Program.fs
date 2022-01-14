@@ -19,7 +19,9 @@ let termSine x n =
         if i = 0 || i%2 = 0
         then 0.0
         else (x ** float i) / float(fact i)
-    [0..n] |> List.map term |> removeZeroEl |> elSign |> List.reduce(+)
+    if n = 0
+    then 0.0
+    else [0..n] |> List.map term |> removeZeroEl |> elSign |> List.reduce(+)
 
 let termCos x n =
     let term i =
@@ -28,7 +30,9 @@ let termCos x n =
         else if i%2 <> 0
         then 0.0
         else (x ** float i) / float(fact i)
-    [0..n] |> List.map term |> removeZeroEl |> elSign |> List.reduce(+)
+    if n = 0
+    then 1.0
+    else [0..n] |> List.map term |> removeZeroEl |> elSign |> List.reduce(+)
 
 /// answer to Tick1
 // the header given here is correct.
