@@ -33,6 +33,11 @@ let termCos x n =
 /// answer to Tick1
 // the header given here is correct.
 let polarToCartesianApprox (r,theta) n = 
+    let cosineTerm = termCos theta n
+    let sineTerm = termSine theta n
+    let x = r * cosineTerm
+    let y = r * sineTerm
+    (x,y)
         
     
 
