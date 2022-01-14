@@ -8,19 +8,19 @@ let fact x =
     then 1.0
     else List.reduce (*) [1.0..x]
 
-let termSine n =
+let termSine x n =
     if n = 0
     then 0
     else if n % 2 = 0
-    then (x ** float(n-1)) / float(fact n-1)
+    then (x ** float(n-1)) / float(fact (n-1))
     else (x ** float(n)) / float(fact n)
 
-let termCos n =
+let termCos x n =
     if n = 0
     then 1.0
     else if n % 2 = 0
     then (x ** float(n)) / float(fact n)
-    else (x ** float(n-1)) / float(fact n-1)
+    else (x ** float(n-1)) / float(fact (n-1))
 
 let elSign lst = 
     lst |> List.mapi (fun i x -> if i%2 = 0 then x else -x)
@@ -28,7 +28,7 @@ let elSign lst =
 /// answer to Tick1
 // the header given here is correct.
 let polarToCartesianApprox (r,theta) n = 
-    failwithf "Tick1 not yet implemented" // replace this line with your top-level implementation
+    
 
 
 //--------------------testbench code - DO NOT CHANGE-----------------------------//
