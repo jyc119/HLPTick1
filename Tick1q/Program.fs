@@ -9,18 +9,20 @@ let fact x =
     else List.reduce (*) [1.0..x]
 
 let termSine x n =
-    if n = 0
-    then 0
-    else if n % 2 = 0
-    then (x ** float(n-1)) / float(fact (n-1))
-    else (x ** float(n)) / float(fact n)
+    let term i = 
+        if i = 0 || i%2 = 0
+        then 0.0
+        else (x ** float i) / float(fact i)
+    [0..n] |> List.map term 
 
 let termCos x n =
-    if n = 0
-    then 1.0
-    else if n % 2 = 0
-    then (x ** float(n)) / float(fact n)
-    else (x ** float(n-1)) / float(fact (n-1))
+    let term i =
+        if i = 0
+        then 1.0
+        else if i%2 <> 0
+        then 0.0
+        else (x ** float i) / float(fact i)
+    [0..n] |> List.map term
 
 let elSign lst = 
     lst |> List.mapi (fun i x -> if i%2 = 0 then x else -x)
@@ -28,6 +30,11 @@ let elSign lst =
 /// answer to Tick1
 // the header given here is correct.
 let polarToCartesianApprox (r,theta) n = 
+    let cosineTerm = 
+        [0..n] |> List.map termCos theta n |> List.map elSign |> List.reduce (+)
+    let sineTerm = 
+        [0..n] |> List.map termSine theta n |> List.map elSign |> List.reduce (+)
+
     
 
 
