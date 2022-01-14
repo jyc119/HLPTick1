@@ -22,7 +22,8 @@ let termCos n =
     then (x ** float(n)) / float(fact n)
     else (x ** float(n-1)) / float(fact n-1)
 
-
+let elSign lst = 
+    lst |> List.mapi (fun i x -> if i%2 = 0 then x else -x)
 
 /// answer to Tick1
 // the header given here is correct.
